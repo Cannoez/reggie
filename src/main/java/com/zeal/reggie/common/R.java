@@ -1,6 +1,8 @@
 package com.zeal.reggie.common;
 
 import lombok.Data;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +11,7 @@ import java.util.Map;
  *通过返回结果,服务器响应的数据最终都会封装成此对象
  */
 @Data
-public class R<T> {
+public class R<T> implements Serializable {
 
     /** 编码：1成功，0和其它数字为失败*/
     private Integer code;
