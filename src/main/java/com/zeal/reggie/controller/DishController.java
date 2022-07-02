@@ -10,6 +10,8 @@ import com.zeal.reggie.model.pojo.DishFlavor;
 import com.zeal.reggie.service.CategoryService;
 import com.zeal.reggie.service.DishFlavorService;
 import com.zeal.reggie.service.DishService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,7 @@ import java.util.stream.Collectors;
  * @description:菜品管理
  * @date: 2022-06-25 18:48
  */
+@Api(tags = "菜品相关接口")
 @Slf4j
 @RestController
 @RequestMapping("/dish")
@@ -48,6 +51,7 @@ public class DishController {
      * @param dishDto
      * @return
      */
+    @ApiOperation("新增菜品")
     @PostMapping
     public R<String> save(@RequestBody DishDto dishDto){
         log.info(dishDto.toString());
@@ -70,6 +74,7 @@ public class DishController {
      * @param name
      * @return
      */
+    @ApiOperation("菜品分页")
     @GetMapping("/page")
     public R<Page> page(int page,int pageSize,String name){
         //构造分页构造器
@@ -107,6 +112,7 @@ public class DishController {
      * @param id
      * @return
      */
+    @ApiOperation("查看菜品及口味信息")
     @GetMapping("/{id}")
     public R<DishDto> get(@PathVariable Long id){
         DishDto dishDto = dishService.getByIdWithFlavor(id);
@@ -118,6 +124,7 @@ public class DishController {
      * @param dishDto
      * @return
      */
+    @ApiOperation("修改菜品")
     @PutMapping
     public R<String> update(@RequestBody DishDto dishDto){
         log.info(dishDto.toString());
@@ -155,6 +162,7 @@ public class DishController {
 //        return R.success(list);
 //    }
 
+    @ApiOperation("菜品条件查询")
     @GetMapping("/list")
     public R<List<DishDto>> list(Dish dish){
         List<DishDto> dishDtoList=null;
@@ -202,6 +210,7 @@ public class DishController {
     /**
      * 菜品的起售和停售
      */
+    @ApiOperation("菜品状态")
     @PostMapping("/status/{status}")
     public R<String> status(@PathVariable Integer status,Long[] ids){
 //        log.info("setmeal====>{},status==>{}" + ids +"====>" + status);
@@ -220,6 +229,7 @@ public class DishController {
      * @param ids
      * @return
      */
+    @ApiOperation("删除菜品")
     @DeleteMapping
     public R<String> delete(@RequestParam List<Long> ids){
         dishService.deleteWithFlavor(ids);

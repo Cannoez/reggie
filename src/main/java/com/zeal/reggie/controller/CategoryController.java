@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeal.reggie.common.R;
 import com.zeal.reggie.model.pojo.Category;
 import com.zeal.reggie.service.CategoryService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,7 @@ import java.util.List;
  * @description:
  * @date: 2022-06-23 23:54
  */
+@Api(tags = "分类相关接口")
 @Slf4j
 @RestController
 @RequestMapping("/category")
@@ -29,6 +32,7 @@ public class CategoryController {
      * @param category
      * @return
      */
+    @ApiOperation("新增分类")
     @PostMapping
     public R<String> save(@RequestBody Category category){
         log.info("category:{}",category);
@@ -43,6 +47,7 @@ public class CategoryController {
      * @param pageSize
      * @return
      */
+    @ApiOperation("分类分页")
     @GetMapping("/page")
     public R<Page> page(int page,int pageSize){
         //分页构造器
@@ -63,6 +68,7 @@ public class CategoryController {
      * @param ids
      * @return
      */
+    @ApiOperation("删除分类")
     @DeleteMapping
     public R<String> delete(Long ids){
         log.info("删除分类,id为:{}",ids);
@@ -75,6 +81,7 @@ public class CategoryController {
      * @param category
      * @return
      */
+    @ApiOperation("修改分类")
     @PutMapping
     public R<String> update(@RequestBody Category category){
         log.info("修改分类信息:{}",category);
@@ -87,6 +94,7 @@ public class CategoryController {
      * @param category
      * @return
      */
+    @ApiOperation("分类条件查询")
     @GetMapping("/list")
     public R<List<Category>> list(Category category){
         //条件构造器

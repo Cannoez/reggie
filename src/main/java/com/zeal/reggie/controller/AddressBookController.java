@@ -13,6 +13,8 @@ import com.zeal.reggie.common.BaseContext;
 import com.zeal.reggie.common.R;
 import com.zeal.reggie.model.pojo.AddressBook;
 import com.zeal.reggie.service.AddressBookService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,7 @@ import java.util.List;
 /**
  * 地址簿管理
  */
+@Api(tags = "地址簿相关接口")
 @Slf4j
 @RestController
 @RequestMapping("/addressBook")
@@ -33,6 +36,7 @@ public class AddressBookController {
     /**
      * 新增用户地址
      */
+    @ApiOperation("新增用户地址")
     @PostMapping
     public R<AddressBook> save(@RequestBody AddressBook addressBook) {
         // 通过上下文获取用户ID
@@ -45,6 +49,7 @@ public class AddressBookController {
     /**
      * 设置默认地址
      */
+    @ApiOperation("设置默认地址")
     @PutMapping("/default")
     public R<AddressBook> setDefault(@RequestBody AddressBook addressBook) {
         log.info("addressBook:{}", addressBook);
@@ -64,6 +69,7 @@ public class AddressBookController {
     /**
      * 根据id查询地址
      */
+    @ApiOperation("查询地址")
     @GetMapping("/{id}")
     public R get(@PathVariable Long id) {
         AddressBook addressBook = addressBookService.getById(id);
@@ -77,6 +83,7 @@ public class AddressBookController {
     /**
      * 查询默认地址
      */
+    @ApiOperation("查询默认地址")
     @GetMapping("/default")
     public R<AddressBook> getDefault() {
         LambdaQueryWrapper<AddressBook> queryWrapper = new LambdaQueryWrapper<>();
@@ -96,6 +103,7 @@ public class AddressBookController {
     /**
      * 查询指定用户的全部地址
      */
+    @ApiOperation("根据条件查询地址")
     @GetMapping("/list")
     public R<List<AddressBook>> list(AddressBook addressBook) {
         addressBook.setUserId(BaseContext.getCurrentId());
@@ -115,6 +123,7 @@ public class AddressBookController {
      * @param id
      * @return
      */
+    @ApiOperation("删除地址")
     @DeleteMapping
     public R<String> delete(@RequestParam("ids") Long id){
         if (id == null){
@@ -132,6 +141,7 @@ public class AddressBookController {
      * @param addressBook
      * @return
      */
+    @ApiOperation("修改地址")
     @PutMapping
     public R<String> update(@RequestBody AddressBook addressBook){
         if (addressBook == null){

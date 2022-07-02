@@ -6,6 +6,8 @@ import com.zeal.reggie.model.pojo.User;
 import com.zeal.reggie.service.UserService;
 import com.zeal.reggie.util.SMSUtils;
 import com.zeal.reggie.util.ValidateCodeUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,7 @@ import java.util.concurrent.TimeUnit;
  * @description:
  * @date: 2022-06-27 0:19
  */
+@Api(tags = "用户相关接口")
 @RestController
 @RequestMapping("/user")
 @Slf4j
@@ -40,6 +43,7 @@ public class UserController {
      * @param user
      * @return
      */
+    @ApiOperation("发送短信和验证码")
     @PostMapping("/sendMsg")
     public R<String> sendMsg(@RequestBody  User user,HttpSession session){
         //获取手机号
@@ -68,6 +72,7 @@ public class UserController {
      * @param session
      * @return
      */
+    @ApiOperation("移动端登录")
     @PostMapping("/login")
     public R<User> login(@RequestBody Map map, HttpSession session){
         log.info(map.toString());
@@ -106,6 +111,7 @@ public class UserController {
      * 移动端用户退出登录
      * @return
      */
+    @ApiOperation("移动端退出")
     @PostMapping("/loginout")
     public R<String> loginout(HttpSession session){
         session.invalidate();

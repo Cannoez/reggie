@@ -9,6 +9,8 @@ import com.zeal.reggie.dto.OrderDto;
 import com.zeal.reggie.model.pojo.*;
 import com.zeal.reggie.service.OrdersService;
 import com.zeal.reggie.service.ShoppingCartService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
  * @description:订单
  * @date: 2022-06-27 21:55
  */
+@Api(tags = "订单相关接口")
 @Slf4j
 @RestController
 @RequestMapping("/order")
@@ -41,6 +44,7 @@ public class OrderController {
      * @param orders
      * @return
      */
+    @ApiOperation("用户下单")
     @PostMapping("/submit")
     public R<String> submit(@RequestBody Orders orders){
 
@@ -54,7 +58,7 @@ public class OrderController {
      * @param pageSize
      * @return
      */
-
+    @ApiOperation("后台分页")
     @GetMapping("/page")
     public  R<Page> page(int page, int pageSize, String number,
                          @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime beginTime,
@@ -80,6 +84,7 @@ public class OrderController {
      * 修改订单状态
      * @return
      */
+    @ApiOperation("订单状态")
     @PutMapping
     public R<String> status(@RequestBody Orders orders){
          ordersService.updateById(orders);
@@ -92,6 +97,7 @@ public class OrderController {
      * @param pageSize
      * @return
      */
+    @ApiOperation("前端分页")
     @GetMapping("/userPage")
     public R<Page> page(Integer page, Integer pageSize){
         //分页构造器
@@ -130,6 +136,7 @@ public class OrderController {
      * @param orders
      * @return
      */
+    @ApiOperation("再来一单")
     @PostMapping("/again")
     public R<String> again(@RequestBody Orders orders){
         //根据订单id找订单详细

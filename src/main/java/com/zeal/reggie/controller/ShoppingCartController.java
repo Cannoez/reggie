@@ -5,6 +5,8 @@ import com.zeal.reggie.common.BaseContext;
 import com.zeal.reggie.common.R;
 import com.zeal.reggie.model.pojo.ShoppingCart;
 import com.zeal.reggie.service.ShoppingCartService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import java.util.List;
  * @description:
  * @date: 2022-06-27 18:53
  */
+@Api(tags = "购物车相关接口")
 @Slf4j
 @Controller
 @RestController
@@ -28,6 +31,7 @@ public class ShoppingCartController {
     @Autowired
     private ShoppingCartService shoppingCartService;
 
+    @ApiOperation("新增购物车")
     @PostMapping("/add")
     public R<ShoppingCart> add(@RequestBody ShoppingCart shoppingCart){
         log.info("购物车数据{}",shoppingCart);
@@ -69,6 +73,7 @@ public class ShoppingCartController {
      * 查看购物车
      * @return
      */
+    @ApiOperation("查看购物车")
     @GetMapping("/list" )
     public R<List<ShoppingCart>> list(){
         log.info("查看购物车");
@@ -84,6 +89,7 @@ public class ShoppingCartController {
      * 清空购物车
      * @return
      */
+    @ApiOperation("清空购物车")
     @DeleteMapping("/clean")
     public R<String> clean(){
         //delect from shopping_cart where user_id=?
@@ -97,6 +103,7 @@ public class ShoppingCartController {
      * 修改购物车
      * @return
      */
+    @ApiOperation("修改购物车")
     @Transactional
     @PostMapping("/sub")
     public R<ShoppingCart> sub(@RequestBody ShoppingCart shoppingCart){

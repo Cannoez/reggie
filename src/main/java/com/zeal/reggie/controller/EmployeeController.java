@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zeal.reggie.common.R;
 import com.zeal.reggie.model.pojo.Employee;
 import com.zeal.reggie.service.EmployeeService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import java.time.LocalDateTime;
  * @description:
  * @date: 2022-06-22 23:02
  */
+@Api(tags = "后台相关接口")
 @Slf4j
 @RestController
 @RequestMapping("/employee")
@@ -36,6 +39,7 @@ public class EmployeeController {
      * @param employee
      * @return
      */
+    @ApiOperation("后台登录")
     @PostMapping("/login")
     public R<Employee> login(HttpSession session, @RequestBody Employee employee){
         //1 将页面提交的密码进行MD5加密
@@ -68,6 +72,7 @@ public class EmployeeController {
      * @param session
      * @return
      */
+    @ApiOperation("后台退出")
     @PostMapping("/logout")
     public R<String> logout(HttpSession session){
         session.invalidate();
@@ -80,6 +85,7 @@ public class EmployeeController {
      * @param employee
      * @return
      */
+    @ApiOperation("新增员工")
     @PostMapping
     public R<String> save(HttpSession session,@RequestBody Employee employee){
         log.info("新增员工,员工信息:{}",employee.toString());
@@ -106,6 +112,7 @@ public class EmployeeController {
      * @param name
      * @return
      */
+    @ApiOperation("员工分页查询")
     @GetMapping("/page")
     public R<Page> page(int page,int pageSize,String name){
         log.info("page={},pageSize={},name={}",page,pageSize,name);
@@ -128,6 +135,7 @@ public class EmployeeController {
      * @param employee
      * @return
      */
+    @ApiOperation("修改员工id")
     @PutMapping
     public  R<String> update(HttpSession session, @RequestBody Employee employee){
         log.info(employee.toString());
@@ -144,6 +152,7 @@ public class EmployeeController {
      * @param id
      * @return
      */
+    @ApiOperation("根据id查询")
     @GetMapping("/{id}")
     public R<Employee> getById(@PathVariable Long id){
         log.info("根据id查询员工信息...");
