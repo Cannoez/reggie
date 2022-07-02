@@ -1,16 +1,16 @@
 server:
-  port: 8080
+  port: 8090
 spring:
   application:
     name: reggie
   datasource:
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
-      username: root
-      password: root
+      url: jdbc:mysql://81.70.45.13:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: "xiaoming"
+      password: "Root@1234"
   redis:
-    host: 192.168.235.100
+    host: 81.70.45.13
     port: 6379
     password: root
     database: 0

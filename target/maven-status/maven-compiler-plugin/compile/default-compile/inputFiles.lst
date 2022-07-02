@@ -36,6 +36,7 @@ D:\java\reg\src\main\java\com\zeal\reggie\exception\GlobalExceptionHandler.java
 D:\java\reg\src\main\java\com\zeal\reggie\model\dao\DishMapper.java
 D:\java\reg\src\main\java\com\zeal\reggie\ReggieApplication.java
 D:\java\reg\src\main\java\com\zeal\reggie\service\DishService.java
+D:\java\reg\src\main\java\com\zeal\reggie\config\RedisConfig.java
 D:\java\reg\src\main\java\com\zeal\reggie\service\impl\OrderDetailServiceImpl.java
 D:\java\reg\src\main\java\com\zeal\reggie\service\impl\EmployeeServiceImpl.java
 D:\java\reg\src\main\java\com\zeal\reggie\controller\ShoppingCartController.java
