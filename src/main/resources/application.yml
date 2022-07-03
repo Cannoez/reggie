@@ -29,10 +29,14 @@ mybatis-plus:
       id-type: ASSIGN_ID
 
 reggie:
-  path: D:/java/reg/img/
+  path: /www/wwwroot/img/
 
 logging:
   level:
     com.zeal: debug
+
+
+
+
 
 

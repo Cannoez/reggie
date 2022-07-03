@@ -42,7 +42,8 @@ public class LoginCheckFilter implements Filter {
                 "/front/**",
                 "/common/**",
                 "/user/sendMsg",//移动端发送短信
-                "/user/login"//移动端登录
+                "/user/login",//移动端登录
+                "/"
         };
         //2 判断本次请求是否需要处理
         boolean check=check(urls,requestURI);
