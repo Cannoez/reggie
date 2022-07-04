@@ -45,8 +45,8 @@
 
 **后端管理页面：**
 
-登录页面：[http://localhost:8080/backend/page/login/login.html](http://localhost:8090/backend/page/login/login.html)
+登录页面：[http://localhost:8080/backend/page/login/login.html](http://localhost:8080/backend/page/login/login.html)
 
 
-APP端管理页面: [http://localhost:8080/front/index.html](http://localhost:8090/front/index.html)
+APP端管理页面: [http://localhost:8080/front/index.html](http://localhost:8080/front/index.html)
 
