@@ -41,11 +41,12 @@
 
 
 ### 附录：项目成果图展示
+下载V1.0分支的源码后,把application.yml文件中有关Redis的配置注释掉即可
 
 **后端管理页面：**
 
-登录页面：[http://localhost:8090/backend/page/login/login.html](http://localhost:8090/backend/page/login/login.html)
+登录页面：[http://localhost:8080/backend/page/login/login.html](http://localhost:8090/backend/page/login/login.html)
 
 
-APP端管理页面: [http://localhost:8090/front/index.html](http://localhost:8090/front/index.html)
+APP端管理页面: [http://localhost:8080/front/index.html](http://localhost:8090/front/index.html)
 
